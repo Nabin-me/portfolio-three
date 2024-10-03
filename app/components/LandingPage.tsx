@@ -1,8 +1,9 @@
-import { EffectComposer } from "@react-three/postprocessing";
+import { EffectComposer, Noise } from "@react-three/postprocessing";
 import { Fluid } from "@whatisjery/react-fluid-distortion";
 import { ThreeTunnel } from "@/app/utils/tunel";
 import { Canvas } from "@react-three/fiber";
 import Text from "./Text";
+import { BlendFunction } from "postprocessing";
 
 const ThreeScene = () => {
   return (
@@ -20,16 +21,16 @@ const ThreeScene = () => {
             velocityDissipation={0.995}
             intensity={0.05}
             blend={0.2}
-            showBackground={false}
+            showBackground={true}
             backgroundColor="#fff"
             fluidColor="#4a4a4a"
           />
           <Text />
-          {/* <Noise
+          <Noise
             premultiply
             blendFunction={BlendFunction.NORMAL}
             opacity={0.3}
-          /> */}
+          />
         </EffectComposer>
       </ThreeTunnel.In>
     </Canvas>
