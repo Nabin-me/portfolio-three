@@ -12,6 +12,14 @@ const ThreeCanvas = () => {
         height: "100vh",
         width: "100vw",
       }}
+      camera={{
+        position: [0, 0, 15],
+        fov: 40,
+        near: 1,
+        far: 50,
+      }}
+      gl={{ logarithmicDepthBuffer: true, antialias: false }}
+      dpr={[1, 1.5]}
     >
       <Suspense fallback={null}>
         <ThreeTunnel.Out />

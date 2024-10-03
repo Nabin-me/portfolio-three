@@ -1,6 +1,6 @@
 "use client";
 
-import { Text as DreiText } from "@react-three/drei";
+import { Text as DreiText, Float } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useMemo } from "react";
 
@@ -13,9 +13,9 @@ const Text = () => {
   );
 
   return (
-    <group position={[0, 0, 1]} scale={scale} renderOrder={2}>
+    <group position={[0, 0, -4]} scale={scale} renderOrder={2}>
       <DreiText
-        font="/fonts/Aspekta-400.otf"
+        font="/fonts/Aspekta-500.otf"
         maxWidth={4.2}
         textAlign="center"
         fontSize={0.15}
@@ -48,10 +48,10 @@ const Text = () => {
       </DreiText>
 
       <DreiText
-        font="/fonts/Aspekta-400.otf"
-        maxWidth={4.2}
+        font="/fonts/Aspekta-500.otf"
+        maxWidth={5.2}
         textAlign="center"
-        fontSize={0.1}
+        fontSize={0.15}
         lineHeight={1.5}
         position-y={-0.8}
         color="#4E5597"

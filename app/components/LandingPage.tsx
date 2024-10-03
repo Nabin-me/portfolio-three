@@ -3,15 +3,12 @@ import { Fluid } from "@whatisjery/react-fluid-distortion";
 import { ThreeTunnel } from "@/app/utils/tunel";
 import { Canvas } from "@react-three/fiber";
 import Text from "./Text";
+import { LogoRender } from "./LogoRender";
 import { BlendFunction } from "postprocessing";
-import { Stats } from "@react-three/drei";
+import { Center, Stats } from "@react-three/drei";
 const ThreeScene = () => {
   return (
-    <Canvas
-      camera={{ position: [30, 0, -3], fov: 35, near: 1, far: 50 }}
-      gl={{ logarithmicDepthBuffer: true, antialias: false }}
-      dpr={[1, 1.5]}
-    >
+    <Canvas>
       <ThreeTunnel.In>
         <EffectComposer>
           <Fluid
@@ -24,16 +21,18 @@ const ThreeScene = () => {
             densityDissipation={0.99}
             velocityDissipation={0.995}
             intensity={0.05}
-            // blend={0.2}
             showBackground={true}
             backgroundColor="#fff"
             fluidColor="red"
           />
-          <Text />
+          <Center>
+            <LogoRender />
+            <Text />
+          </Center>
           <Noise
             premultiply
             blendFunction={BlendFunction.NORMAL}
-            opacity={0.3}
+            opacity={0.2}
           />
         </EffectComposer>
       </ThreeTunnel.In>
