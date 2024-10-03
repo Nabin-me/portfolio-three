@@ -1,6 +1,6 @@
 "use client";
 
-import { Text as DreiText, Float } from "@react-three/drei";
+import { Text as DreiText } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useMemo } from "react";
 

@@ -74,9 +74,7 @@ const GelatinousCube: FC<GelatinousCubeProps> = (props) => {
     bg: new THREE.Color("#fff"),
   };
 
-  const { nodes, materials } = useGLTF(
-    "/models/gelatinous_cube-transformed.glb"
-  ) as any;
+  const { nodes } = useGLTF("/models/gelatinous_cube-transformed.glb") as any;
   const { scene: logoScene } = useGLTF("/models/logo.glb") as any;
 
   return (
