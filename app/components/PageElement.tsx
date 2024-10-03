@@ -10,7 +10,6 @@ import {
   Instances,
   CameraControls,
   MeshTransmissionMaterial,
-  Stats,
 } from "@react-three/drei";
 import { Group, Mesh, MeshStandardMaterial } from "three";
 import { GLTF } from "three-stdlib";
@@ -132,7 +131,7 @@ export default function PageElement() {
         minPolarAngle={0}
         maxPolarAngle={Math.PI / 2}
       />
-      <Stats />
+      {/* <Stats /> */}
     </Canvas>
   );
 }

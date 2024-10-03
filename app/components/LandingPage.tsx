@@ -7,7 +7,11 @@ import { BlendFunction } from "postprocessing";
 import { Stats } from "@react-three/drei";
 const ThreeScene = () => {
   return (
-    <Canvas camera={{ position: [30, 0, -3], fov: 35, near: 1, far: 50 }}>
+    <Canvas
+      camera={{ position: [30, 0, -3], fov: 35, near: 1, far: 50 }}
+      gl={{ logarithmicDepthBuffer: true, antialias: false }}
+      dpr={[1, 1.5]}
+    >
       <ThreeTunnel.In>
         <EffectComposer>
           <Fluid
@@ -20,10 +24,10 @@ const ThreeScene = () => {
             densityDissipation={0.99}
             velocityDissipation={0.995}
             intensity={0.05}
-            blend={0.2}
+            // blend={0.2}
             showBackground={true}
             backgroundColor="#fff"
-            fluidColor="#4a4a4a"
+            fluidColor="red"
           />
           <Text />
           <Noise
