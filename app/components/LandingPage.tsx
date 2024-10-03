@@ -3,48 +3,60 @@ import { Fluid } from "@whatisjery/react-fluid-distortion";
 import { ThreeTunnel } from "@/app/utils/tunel";
 import { Canvas } from "@react-three/fiber";
 import Text from "./Text";
-import { LogoRender } from "./LogoRender";
 import { BlendFunction } from "postprocessing";
-import { Center, Stats } from "@react-three/drei";
-const ThreeScene = () => {
+import { Stats } from "@react-three/drei";
+import { useEffect, useState } from "react";
+
+const NoiseEffect = ({ isMobile }: { isMobile: boolean }) => {
+  if (isMobile) return null;
+  return (
+    <Noise premultiply blendFunction={BlendFunction.NORMAL} opacity={0.2} />
+  );
+};
+
+const ThreeScene = ({ isMobile }: { isMobile: boolean }) => {
   return (
     <Canvas>
       <ThreeTunnel.In>
-        <EffectComposer>
+        <EffectComposer multisampling={0}>
           <Fluid
-            radius={0.05}
-            curl={3}
-            swirl={2}
-            distortion={0.5}
-            force={1.5}
+            radius={isMobile ? 0.03 : 0.05}
+            curl={isMobile ? 2 : 3}
+            swirl={isMobile ? 1 : 2}
+            distortion={isMobile ? 0.3 : 0.5}
+            force={isMobile ? 1 : 1.5}
             pressure={0.97}
             densityDissipation={0.99}
             velocityDissipation={0.995}
-            intensity={0.05}
+            intensity={isMobile ? 0.03 : 0.05}
             showBackground={true}
             backgroundColor="#fff"
             fluidColor="red"
           />
-          <Center>
-            <LogoRender />
-            <Text />
-          </Center>
-          <Noise
-            premultiply
-            blendFunction={BlendFunction.NORMAL}
-            opacity={0.2}
-          />
+          <Text />
+          <NoiseEffect isMobile={isMobile} />
         </EffectComposer>
       </ThreeTunnel.In>
-      <Stats />
+      {process.env.NODE_ENV === "development" && <Stats />}
     </Canvas>
   );
 };
 
 const LandingPage = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div style={{ position: "relative", width: "100%", height: "100vh" }}>
-      <ThreeScene />
+      <ThreeScene isMobile={isMobile} />
       <div
         style={{
           position: "absolute",

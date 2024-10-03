@@ -8,12 +8,12 @@ const Text = () => {
   const { viewport } = useThree();
 
   const scale = useMemo(
-    () => Math.min(1, viewport.width / 8),
+    () => Math.min(1, viewport.width / 14),
     [viewport.width]
   );
 
   return (
-    <group position={[0, 0, -4]} scale={scale} renderOrder={2}>
+    <group position={[0, 0, 7]} scale={scale} renderOrder={2}>
       <DreiText
         font="/fonts/Aspekta-500.otf"
         maxWidth={4.2}
@@ -43,6 +43,7 @@ const Text = () => {
         position-y={-0.12}
         fontSize={0.94}
         color="#4E5597"
+        overflowWrap="break-word"
       >
         CONSTRUCTION
       </DreiText>
@@ -56,7 +57,7 @@ const Text = () => {
         position-y={-0.8}
         color="#4E5597"
       >
-        THIS SITE IS UNDER CONSTRUCTION. PLEASE CHECK BACK LATER
+        PLEASE CHECK BACK LATER
       </DreiText>
     </group>
   );

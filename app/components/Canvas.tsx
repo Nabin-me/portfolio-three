@@ -18,7 +18,11 @@ const ThreeCanvas = () => {
         near: 1,
         far: 50,
       }}
-      gl={{ logarithmicDepthBuffer: true, antialias: false }}
+      gl={{
+        logarithmicDepthBuffer: true,
+        antialias: false,
+        powerPreference: "high-performance",
+      }}
       dpr={[1, 1.5]}
     >
       <Suspense fallback={null}>
