@@ -4,7 +4,7 @@ import { ThreeTunnel } from "@/app/utils/tunel";
 import { Canvas } from "@react-three/fiber";
 import Text from "./Text";
 import { BlendFunction } from "postprocessing";
-
+import { Stats } from "@react-three/drei";
 const ThreeScene = () => {
   return (
     <Canvas camera={{ position: [30, 0, -3], fov: 35, near: 1, far: 50 }}>
@@ -33,6 +33,7 @@ const ThreeScene = () => {
           />
         </EffectComposer>
       </ThreeTunnel.In>
+      <Stats />
     </Canvas>
   );
 };
